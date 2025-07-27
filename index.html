@@ -1,3 +1,7 @@
+
+// index.php
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +80,7 @@
       border-radius: 50%;
       border: 3px solid #bb86fc;
       margin: 40px auto 0;
-      background: url('profile.png') center/cover no-repeat; /* ✅ Your image here */
+      background: url('images/profile.png') center/cover no-repeat; /* ✅ Your image here */
       box-shadow: 0 0 20px rgba(3, 218, 197, 0.5);
       animation: fadeIn 1.5s ease 1s forwards;
     }
@@ -358,7 +362,7 @@
     flex: 1 1 40%;
     height: 280px;
     max-width: 400px;
-    background: url('publication.jpg') center/contain no-repeat;
+    background: url('images/publication.jpg') center/contain no-repeat;
     background-size: contain;
     border-radius: 12px;
     opacity: 0;
@@ -398,7 +402,7 @@
     flex: 1 1 40%;
     height: 280px;
     max-width: 300px;
-    background: url('project-guided.jpeg') center/contain no-repeat;
+    background: url('images/project-guided.jpeg') center/contain no-repeat;
     background-size: contain;
     border-radius: 12px;
     opacity: 0;
@@ -443,6 +447,82 @@
     0% { transform: translateX(50px); opacity: 0; }
     100% { transform: translateX(0); opacity: 1; }
   }
+  #workshops {
+    max-width: 1100px;
+    margin: 100px auto;
+    padding: 0 30px;
+  }
+  #workshops h2 {
+    color: #03dac5;
+    border-bottom: 3px solid #bb86fc;
+    padding-bottom: 12px;
+    margin-bottom: 30px;
+    font-size: 2em;
+    text-align: center;
+  }
+  .workshop-desc {
+    color: #ccc;
+    font-size: 1.1em;
+    text-align: center;
+    margin-bottom: 30px;
+    animation: slideInUp 0.8s ease forwards;
+  }
+  .workshop-collage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .workshop-tile {
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    animation: slideInUp 0.8s ease forwards;
+  }
+  .workshop-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .workshop-tile:hover img {
+    transform: scale(1.05);
+  }
+
+  @keyframes slideInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+  }
+  .popup-content {
+    background: #2c2c2c;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    color: #eee;
+    animation: slideInZoom 0.4s ease;
+  }
+  .close {
+    float: right;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #bb86fc;
+  }
+  @keyframes slideInZoom {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
 
   </style>
 </head>
@@ -475,21 +555,21 @@
     <h2>Projects</h2>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-image" style="background: url('cloud.jpg') center/cover no-repeat;"></div>
+        <div class="project-image" style="background: url('images/cloud.jpg') center/cover no-repeat;"></div>
         <div class="project-content">
           <h3>Cloud Computing Framework</h3>
           <p>Developed a cloud architecture for educational deployment, focusing on scalable e-learning systems.</p>
         </div>
       </div>
       <div class="project-card">
-        <div class="project-image" style="background: url('sentiment.png') center/cover no-repeat;"></div>
+        <div class="project-image" style="background: url('images/sentiment.png') center/cover no-repeat;"></div>
         <div class="project-content">
           <h3>Sentiment Analysis Tool</h3>
           <p>Created a sentiment analysis model to study student feedback and improve training modules.</p>
         </div>
       </div>
       <div class="project-card">
-        <div class="project-image" style="background: url('data-privacy.jpg') center/cover no-repeat;"></div>
+        <div class="project-image" style="background: url('images/data-privacy.jpg') center/cover no-repeat;"></div>
         <div class="project-content">
           <h3>Data Privacy Research</h3>
           <p>Published research on data privacy techniques for academic institutions transitioning to cloud storage.</p>
@@ -497,6 +577,37 @@
       </div>
     </div>
   </section>
+
+  <section id="workshops">
+  <h2>Workshops</h2>
+  <p class="workshop-desc">Engaged in multiple hands-on workshops aimed at enhancing practical understanding in areas such as Artificial Intelligence, Cyber Security, and Data Science. These sessions encouraged experiential learning and real-time problem-solving, delivering immense value to participants across academic and industry domains.</p>
+  <div class="workshop-collage">
+    <div class="workshop-tile" onclick="openPopup('popup1')">
+      <img src="images/workshop1.jpg" alt="Workshop 1">
+    </div>
+    <div class="workshop-tile" onclick="openPopup('popup2')">
+      <img src="images/workshop2.jpg" alt="Workshop 2">
+    </div>
+    <div class="workshop-tile" onclick="openPopup('popup3')">
+      <img src="images/workshop3.jpg" alt="Workshop 3">
+    </div>
+    <div class="workshop-tile" onclick="openPopup('popup3')">
+      <img src="images/workshop4.jpg" alt="Workshop 3">
+    </div>
+  </div>
+
+  <!-- Popups -->
+  
+</section>
+
+<script>
+  function openPopup(id) {
+    document.getElementById(id).style.display = "block";
+  }
+  function closePopup(id) {
+    document.getElementById(id).style.display = "none";
+  }
+</script>
 
   <section id="experience">
     <h2>Experience</h2>
@@ -633,7 +744,7 @@
 </section>
 
   <footer>
-    &copy; <?php echo date("Y"); ?> By Muraleeshwar. All rights reserved @ WizardHub.
+    &copy;  echo date("Y");  By Muraleeshwar. All rights reserved @ WizardHub.
   </footer>
 </body>
 </html>
